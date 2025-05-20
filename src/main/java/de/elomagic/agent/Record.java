@@ -17,8 +17,6 @@
  */
 package de.elomagic.agent;
 
-import jakarta.annotation.Nonnull;
-
 import java.io.IOException;
 import java.io.Writer;
 
@@ -26,7 +24,7 @@ public class Record {
 
     private static final char SEPARATOR_CHAR = ',';
 
-    public Record(@Nonnull String jar) {
+    public Record(String jar) {
         this.jar = jar;
     }
 
@@ -36,7 +34,7 @@ public class Record {
         return jar;
     }
 
-    public void writeTo(@Nonnull Writer writer) throws IOException {
+    public void writeTo(Writer writer) throws IOException {
         writer.write(System.lineSeparator());
         writer.write(jar.replace(",", "\\,"));
         writer.write(SEPARATOR_CHAR);
