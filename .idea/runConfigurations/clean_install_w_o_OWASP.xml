@@ -13,8 +13,6 @@
             <list>
               <option value="clean" />
               <option value="install" />
-              <option value="-U" />
-              <option value="-Ddependency-check.skip=true" />
             </list>
           </option>
           <option name="multimoduleDir" />

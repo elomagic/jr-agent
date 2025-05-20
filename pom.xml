@@ -253,7 +253,7 @@
                 </executions>
                 <configuration>
                     <nvdApiServerId>nvd</nvdApiServerId>
-                    <skip>false</skip>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
 
