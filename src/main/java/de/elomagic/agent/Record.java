@@ -22,7 +22,7 @@ import java.io.Writer;
 
 public class Record {
 
-    private static final char SEPARATOR_CHAR = ',';
+    private static final String SEPARATOR_CHAR = ";";
 
     public Record(String jar) {
         this.jar = jar;
@@ -36,7 +36,7 @@ public class Record {
 
     public void writeTo(Writer writer) throws IOException {
         writer.write(System.lineSeparator());
-        writer.write(jar.replace(",", "\\,"));
+        writer.write(jar.replace(SEPARATOR_CHAR, "\\" + SEPARATOR_CHAR));
         writer.write(SEPARATOR_CHAR);
     }
 
