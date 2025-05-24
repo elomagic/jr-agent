@@ -23,6 +23,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.instrument.Instrumentation;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -35,7 +36,7 @@ public class ListLoadedClassesAgent {
 
     private static final Logger LOGGER = LogManager.getLogger(ListLoadedClassesAgent.class);
 
-    private static final Set<String> seenJars = new HashSet<>();
+    private static final Set<URL> seenJars = new HashSet<>();
 
     public ListLoadedClassesAgent() {
         // noop
@@ -51,13 +52,13 @@ public class ListLoadedClassesAgent {
                         protectionDomain.getCodeSource() != null &&
                         protectionDomain.getCodeSource().getLocation() != null) {
 
-                    String location = protectionDomain.getCodeSource().getLocation().toString();
+                    URL location = protectionDomain.getCodeSource().getLocation();
 
                     synchronized (seenJars) {
                         if (!seenJars.contains(location)) {
                             seenJars.add(location);
 
-                            Record r = new Record(location);
+                            Record r = new Record(Paths.get(location.toURI()));
                             appendToFile(r);
 
                             LOGGER.debug("Class loaded from JAR: {}", location);

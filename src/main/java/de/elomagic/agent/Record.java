@@ -19,25 +19,26 @@ package de.elomagic.agent;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.file.Path;
 
 public class Record {
 
     private static final String SEPARATOR_CHAR = ";";
 
-    public Record(String jar) {
+    public Record(Path jar) {
         this.jar = jar;
     }
 
-    private final String jar;
+    private final Path jar;
 
-    public String getJar() {
+    public Path getJar() {
         return jar;
     }
 
     public void writeTo(Writer writer) throws IOException {
         writer.write(Long.toString(System.currentTimeMillis()));
         writer.write(SEPARATOR_CHAR);
-        writer.write(jar.replace(SEPARATOR_CHAR, "\\" + SEPARATOR_CHAR));
+        writer.write(jar.toString().replace('\\', '/').replace(SEPARATOR_CHAR, "\\" + SEPARATOR_CHAR));
         writer.write(SEPARATOR_CHAR);
         writer.write(System.lineSeparator());
     }
