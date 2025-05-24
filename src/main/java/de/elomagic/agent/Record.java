@@ -35,9 +35,11 @@ public class Record {
     }
 
     public void writeTo(Writer writer) throws IOException {
-        writer.write(System.lineSeparator());
+        writer.write(Long.toString(System.currentTimeMillis()));
+        writer.write(SEPARATOR_CHAR);
         writer.write(jar.replace(SEPARATOR_CHAR, "\\" + SEPARATOR_CHAR));
         writer.write(SEPARATOR_CHAR);
+        writer.write(System.lineSeparator());
     }
 
 }
