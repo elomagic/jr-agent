@@ -75,7 +75,7 @@ public class ListLoadedClassesAgent {
 
     private static void appendToFile(Record r) {
 
-        Path file = Paths.get("./agent-file.csv");
+        Path file = Paths.get("./elo-agent-file.csv");
 
         try (BufferedWriter writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             r.writeTo(writer);
