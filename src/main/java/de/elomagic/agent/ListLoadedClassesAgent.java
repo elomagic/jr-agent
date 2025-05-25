@@ -85,7 +85,7 @@ public class ListLoadedClassesAgent {
             LOGGER.warn("Following path contains a \\..\\ and is currently not supported: {}", s);
         }
 
-        return Paths.get(s.replace("\\.\\", "\\"));
+        return Paths.get(s.replace("\\.\\", "\\").replace("/./", "/"));
     }
 
     private static void appendToFile(@NotNull Record r) {
