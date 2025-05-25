@@ -1,6 +1,4 @@
-# Tool for identifying unused libraries like JARs
-
----
+# elomagic's Java Agent ![](/doc/logo.png)
 
 [![Apache License, Version 2.0, January 2004](https://img.shields.io/github/license/apache/maven.svg?label=License)][license]
 [![build workflow](https://github.com/elomagic/jr-agent/actions/workflows/maven.yml/badge.svg)](https://github.com/elomagic/jr-agent/actions)
@@ -9,7 +7,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/elomagic/jr-agent/graphs/commit-activity)
 [![Buymeacoffee](https://badgen.net/badge/icon/buymeacoffee?icon=buymeacoffee&label)](https://www.buymeacoffee.com/elomagic)
 
-TODO Description missing
+Tool for identifying unused libraries like JARs
 
 ## Contributing
 
@@ -23,8 +21,6 @@ Versioning follows the semantic of [Semantic Versioning 2.0.0](https://semver.or
 
 The elo-java-agent tool is distributed under [Apache License, Version 2.0][license]
 
-[license]: https://www.apache.org/licenses/LICENSE-2.0
-
 ## Donations
 
 Donations will ensure the following:
@@ -32,4 +28,8 @@ Donations will ensure the following:
 * 🔨 Long term maintenance of the project
 * 🛣 Progress on the roadmap
 * 🐛 Quick responses to bug reports and help requests
+
+[license]: https://www.apache.org/licenses/LICENSE-2.0
+
+
 
