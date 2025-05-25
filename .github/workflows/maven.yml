@@ -65,4 +65,4 @@ jobs:
           draft: true
           prerelease: false
           files: |
-            target/jr-agent-*.*
+            target/elo-java-agent-*.*
