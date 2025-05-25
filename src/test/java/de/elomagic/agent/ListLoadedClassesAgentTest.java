@@ -1,6 +1,7 @@
 package de.elomagic.agent;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledOnOs;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
 
@@ -28,7 +29,7 @@ class ListLoadedClassesAgentTest {
     }
 
     @Test
-    @EnabledOnOs({OS.LINUX, OS.MAC})
+    @DisabledOnOs(OS.WINDOWS)
     void testNormalizePathOnNotWindows() throws IOException, URISyntaxException {
         URL url = Paths.get("/service/libs/./wrapper/jr-agent-1.0-SNAPSHOT.jar").toUri().toURL();
         Path p = ListLoadedClassesAgent.normalizePath(url);
