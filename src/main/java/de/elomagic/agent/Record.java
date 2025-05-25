@@ -17,6 +17,8 @@
  */
 package de.elomagic.agent;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Path;
@@ -25,17 +27,18 @@ public class Record {
 
     private static final String SEPARATOR_CHAR = ";";
 
-    public Record(Path jar) {
+    public Record(@NotNull Path jar) {
         this.jar = jar;
     }
 
     private final Path jar;
 
+    @NotNull
     public Path getJar() {
         return jar;
     }
 
-    public void writeTo(Writer writer) throws IOException {
+    public void writeTo(@NotNull Writer writer) throws IOException {
         writer.write(Long.toString(System.currentTimeMillis()));
         writer.write(SEPARATOR_CHAR);
         writer.write(jar.toString().replace('\\', '/').replace(SEPARATOR_CHAR, "\\" + SEPARATOR_CHAR));

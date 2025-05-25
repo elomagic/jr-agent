@@ -1,4 +1,4 @@
-# Tool for Dependency Track
+# Tool for identifying unused libraries like JARs
 
 ---
 
@@ -21,7 +21,7 @@ Versioning follows the semantic of [Semantic Versioning 2.0.0](https://semver.or
 
 ## License
 
-The dt-tool is distributed under [Apache License, Version 2.0][license]
+The elo-java-agent tool is distributed under [Apache License, Version 2.0][license]
 
 [license]: https://www.apache.org/licenses/LICENSE-2.0
 

@@ -19,10 +19,12 @@ package de.elomagic.agent;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.instrument.Instrumentation;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -42,7 +44,7 @@ public class ListLoadedClassesAgent {
         // noop
     }
 
-    public static void premain(String agentArgs, Instrumentation inst) {
+    public static void premain(String agentArgs, @NotNull Instrumentation inst) {
         LOGGER.always().log("My agent started");
 
         inst.addTransformer((loader, className, classBeingRedefined, protectionDomain, classfileBuffer) -> {
@@ -58,7 +60,7 @@ public class ListLoadedClassesAgent {
                         if (!seenJars.contains(location)) {
                             seenJars.add(location);
 
-                            Record r = new Record(Paths.get(location.toURI()));
+                            Record r = new Record(normalizePath(location));
                             appendToFile(r);
 
                             LOGGER.debug("Class loaded from JAR: {}", location);
@@ -66,14 +68,27 @@ public class ListLoadedClassesAgent {
                     }
                 }
             } catch (Exception e) {
-                // Fehler beim Ermitteln ignorieren
+                LOGGER.warn(e.getMessage(), e);
             }
 
             return null;
         });
     }
 
-    private static void appendToFile(Record r) {
+    @NotNull
+    static Path normalizePath(@NotNull URL location) throws URISyntaxException {
+        Path file = Paths.get(location.toURI());
+
+        String s = file.toString();
+
+        if (s.contains("\\..\\")) {
+            LOGGER.warn("Following path contains a \\..\\ and is currently not supported: {}", s);
+        }
+
+        return Paths.get(s.replace("\\.\\", "\\"));
+    }
+
+    private static void appendToFile(@NotNull Record r) {
 
         Path file = Paths.get("./elo-agent-file.csv");
 
