@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.elomagic</groupId>
-    <artifactId>elo-java-agent</artifactId>
+    <artifactId>elo-agent-java</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>jr-agent</name>
+    <name>elo-agent-java</name>
     <description>Java Runtime Agent</description>
-    <url>https://github.com/elomagic/jr-agent</url>
+    <url>https://github.com/elomagic/elo-agent-java</url>
 
     <inceptionYear>2025</inceptionYear>
 
@@ -54,9 +54,9 @@
     </properties>
 
     <scm>
-        <url>https://github.com/elomagic/jr-agent</url>
-        <connection>scm:git:https://github.com/elomagic/jr-agent.git</connection>
-        <developerConnection>scm:git:https://github.com/elomagic/jr-agent.git</developerConnection>
+        <url>https://github.com/elomagic/elo-agent-java</url>
+        <connection>scm:git:https://github.com/elomagic/elo-agent-java.git</connection>
+        <developerConnection>scm:git:https://github.com/elomagic/elo-agent-java.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 

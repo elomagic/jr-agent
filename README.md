@@ -1,8 +1,8 @@
 [![Apache License, Version 2.0, January 2004](https://img.shields.io/github/license/apache/maven.svg?label=License)][license]
-[![build workflow](https://github.com/elomagic/jr-agent/actions/workflows/maven.yml/badge.svg)](https://github.com/elomagic/jr-agent/actions)
-[![GitHub issues](https://img.shields.io/github/issues-raw/elomagic/jr-agent)](https://github.com/elomagic/jr-agent/issues)
-[![Latest](https://img.shields.io/github/release/elomagic/jr-agent.svg)](https://github.com/elomagic/jr-agent/releases)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/elomagic/jr-agent/graphs/commit-activity)
+[![build workflow](https://github.com/elomagic/elo-agent-java/actions/workflows/maven.yml/badge.svg)](https://github.com/elomagic/elo-agent-java/actions)
+[![GitHub issues](https://img.shields.io/github/issues-raw/elomagic/elo-agent-java)](https://github.com/elomagic/elo-agent-java/issues)
+[![Latest](https://img.shields.io/github/release/elomagic/elo-agent-java.svg)](https://github.com/elomagic/elo-agent-java/releases)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/elomagic/elo-agent-java/graphs/commit-activity)
 [![Buymeacoffee](https://badgen.net/badge/icon/buymeacoffee?icon=buymeacoffee&label)](https://www.buymeacoffee.com/elomagic)
 
 ![](/doc/header.png "Logo")
@@ -25,7 +25,7 @@ Versioning follows the semantic of [Semantic Versioning 2.0.0](https://semver.or
 
 ## License
 
-The elo-java-agent tool is distributed under [Apache License, Version 2.0][license]
+The elo-agent-java tool is distributed under [Apache License, Version 2.0][license]
 
 ## Donations
 

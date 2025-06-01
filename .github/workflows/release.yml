@@ -92,7 +92,7 @@ jobs:
           draft: true
           prerelease: false
           files: |
-            target/jr-agent-*.*   
+            target/elo-agent-java-*.*   
 
   upload:
     needs: build
@@ -135,5 +135,5 @@ jobs:
           draft: true
           prerelease: false
           files: |
-            target/jr-agent-*.tar.gz
-            target/jr-agent-*-x64.zip
+            target/elo-agent-java-*.tar.gz
+            target/elo-agent-java-*-x64.zip
