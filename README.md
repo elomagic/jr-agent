@@ -22,7 +22,7 @@ java -javaagent:/full/path/to/elo-agent-java-[VERSION]-jar-with-dependencies.jar
 or 
 
 ```shell
-java -javaagent:"C:\full\path\to\elo-agent-java-[VERSION]-jar-with-dependencies.jar" -jar yourApp.jar
+java -javaagent:"C:/full/path/to/elo-agent-java-[VERSION]-jar-with-dependencies.jar" -jar yourApp.jar
 ```
 
 ## Agent schema file
