@@ -13,7 +13,26 @@ Backend for identifying unused libraries like JARs
 
 ## How to use
 
-todo
+In the JVM arguments fields, add the ``-javaagent`` argument
+
+```shell
+java -javaagent:/full/path/to/elo-agent-java-[VERSION]-jar-with-dependencies.jar -jar yourApp.jar
+```
+
+or 
+
+```shell
+java -javaagent:"C:\full\path\to\elo-agent-java-[VERSION]-jar-with-dependencies.jar" -jar yourApp.jar
+```
+
+## Agent schema file
+
+The agent schema file is a comma separated file. Each line is similar to an event in the JVM.
+
+### Columns
+
+1. Current time in milliseconds.
+2. Path as given from the JVM with normalized pfad seperator. 
 
 ## Contributing
 
