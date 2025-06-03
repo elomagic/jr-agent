@@ -7,7 +7,7 @@
 
 ![](/doc/header.png "Logo")
 
-Backend for identifying unused libraries like JARs
+Java agent that writes the names of the JARs used by the JVM to a file.
 
 ---
 
@@ -24,6 +24,10 @@ or
 ```shell
 java -javaagent:"C:/full/path/to/elo-agent-java-[VERSION]-jar-with-dependencies.jar" -jar yourApp.jar
 ```
+
+The agent writes all loaded JAR names to the file ```elo-agent-file.csv```.
+
+This file can be evaluated using the [elo-Agent Tool](https://github.com/elomagic/elo-agent).
 
 ## Agent schema file
 
