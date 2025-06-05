@@ -31,10 +31,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ListLoadedClassesAgent {
+
+    private static final Path AGENT_FILE = Paths.get("./elo-agent-file.csv");
 
     private static final Logger LOGGER = LogManager.getLogger(ListLoadedClassesAgent.class);
 
@@ -46,6 +49,8 @@ public class ListLoadedClassesAgent {
 
     public static void premain(String agentArgs, @NotNull Instrumentation inst) {
         LOGGER.always().log("My agent started");
+
+        backupFile();
 
         inst.addTransformer((loader, className, classBeingRedefined, protectionDomain, classfileBuffer) -> {
 
@@ -88,11 +93,26 @@ public class ListLoadedClassesAgent {
         return Paths.get(s.replace("\\.\\", "\\").replace("/./", "/"));
     }
 
+
+    private static void backupFile() {
+
+        // Backup the agent file if it exists. Name of the backup file is based on the current ISO local date time.
+        try {
+            if (Files.exists(AGENT_FILE)) {
+                String backupFileName = "elo-agent-file-" + LocalDateTime.now().toString().replace(":", "-") + ".csv";
+                Path backupFile = Paths.get(backupFileName);
+                Files.copy(AGENT_FILE, backupFile);
+                LOGGER.info("Backup created: {}", backupFile);
+            }
+        } catch (IOException e) {
+            LOGGER.error("Unable to create backup of agent file: {}", e.getMessage(), e);
+        }
+
+    }
+
     private static void appendToFile(@NotNull Record r) {
 
-        Path file = Paths.get("./elo-agent-file.csv");
-
-        try (BufferedWriter writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
+        try (BufferedWriter writer = Files.newBufferedWriter(AGENT_FILE, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             r.writeTo(writer);
         } catch (IOException e) {
             LOGGER.error("Unable to write agent file: {}", e.getMessage(), e);
