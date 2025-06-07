@@ -46,7 +46,6 @@ public class Record {
         writer.write(jar.toString().replace('\\', '/').replace(SEPARATOR_CHAR, "\\" + SEPARATOR_CHAR));
         writer.write(SEPARATOR_CHAR);
         writer.write(Long.toString(duration));
-        writer.write(SEPARATOR_CHAR);
         writer.write(System.lineSeparator());
     }
 

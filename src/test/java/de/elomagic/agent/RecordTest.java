@@ -28,7 +28,7 @@ class RecordTest {
 
         r.writeTo(writer);
 
-        assertThat(writer.toString()).contains(";c:/jr-agent-1.0-SNAPSHOT.jar;1234;");
+        assertThat(writer.toString()).contains(";c:/jr-agent-1.0-SNAPSHOT.jar;1234");
     }
 
     @Test
@@ -44,7 +44,7 @@ class RecordTest {
 
         r.writeTo(writer);
 
-        assertThat(writer.toString()).contains("/jr-agent-1.0-SNAPSHOT.jar;6789;");
+        assertThat(writer.toString()).contains("/jr-agent-1.0-SNAPSHOT.jar;6789");
     }
 
 }
