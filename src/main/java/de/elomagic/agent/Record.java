@@ -27,11 +27,13 @@ public class Record {
 
     private static final String SEPARATOR_CHAR = ";";
 
-    public Record(@NotNull Path jar) {
+    public Record(@NotNull Path jar, long duration) {
         this.jar = jar;
+        this.duration = duration;
     }
 
     private final Path jar;
+    private final long duration;
 
     @NotNull
     public Path getJar() {
@@ -42,6 +44,8 @@ public class Record {
         writer.write(Long.toString(System.currentTimeMillis()));
         writer.write(SEPARATOR_CHAR);
         writer.write(jar.toString().replace('\\', '/').replace(SEPARATOR_CHAR, "\\" + SEPARATOR_CHAR));
+        writer.write(SEPARATOR_CHAR);
+        writer.write(Long.toString(duration));
         writer.write(SEPARATOR_CHAR);
         writer.write(System.lineSeparator());
     }

@@ -43,6 +43,8 @@ public class ListLoadedClassesAgent {
 
     private static final Set<URL> seenJars = new HashSet<>();
 
+    private static final long START_TIME = System.currentTimeMillis();
+
     public ListLoadedClassesAgent() {
         // noop
     }
@@ -53,6 +55,8 @@ public class ListLoadedClassesAgent {
         backupFile();
 
         inst.addTransformer((loader, className, classBeingRedefined, protectionDomain, classfileBuffer) -> {
+
+            long duration = System.currentTimeMillis() - START_TIME;
 
             try {
                 if (protectionDomain != null &&
@@ -65,7 +69,7 @@ public class ListLoadedClassesAgent {
                         if (!seenJars.contains(location)) {
                             seenJars.add(location);
 
-                            Record r = new Record(normalizePath(location));
+                            Record r = new Record(normalizePath(location), duration);
                             appendToFile(r);
 
                             LOGGER.debug("Class loaded from JAR: {}", location);

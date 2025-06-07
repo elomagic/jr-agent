@@ -22,13 +22,13 @@ class RecordTest {
 
         assertThat(url.toString()).startsWith("file:");
 
-        Record r = new Record(Paths.get(url.toURI()));
+        Record r = new Record(Paths.get(url.toURI()), 1234);
 
         StringWriter writer = new StringWriter();
 
         r.writeTo(writer);
 
-        assertThat(writer.toString()).contains(";c:/jr-agent-1.0-SNAPSHOT.jar;");
+        assertThat(writer.toString()).contains(";c:/jr-agent-1.0-SNAPSHOT.jar;1234;");
     }
 
     @Test
@@ -38,13 +38,13 @@ class RecordTest {
 
         assertThat(url.toString()).startsWith("file:");
 
-        Record r = new Record(Paths.get(url.toURI()));
+        Record r = new Record(Paths.get(url.toURI()), 6789);
 
         StringWriter writer = new StringWriter();
 
         r.writeTo(writer);
 
-        assertThat(writer.toString()).contains("/jr-agent-1.0-SNAPSHOT.jar;");
+        assertThat(writer.toString()).contains("/jr-agent-1.0-SNAPSHOT.jar;6789;");
     }
 
 }
