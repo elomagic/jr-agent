@@ -52,7 +52,7 @@ public class ListLoadedClassesAgent {
     public static void premain(String agentArgs, @NotNull Instrumentation inst) {
         LOGGER.always().log("My agent started");
 
-        backupFile();
+        renameFile();
 
         inst.addTransformer((loader, className, classBeingRedefined, protectionDomain, classfileBuffer) -> {
 
@@ -98,15 +98,15 @@ public class ListLoadedClassesAgent {
     }
 
 
-    private static void backupFile() {
+    private static void renameFile() {
 
         // Backup the agent file if it exists. Name of the backup file is based on the current ISO local date time.
         try {
             if (Files.exists(AGENT_FILE)) {
                 String backupFileName = "elo-agent-file-" + LocalDateTime.now().toString().replace(":", "-") + ".csv";
                 Path backupFile = Paths.get(backupFileName);
-                Files.copy(AGENT_FILE, backupFile);
-                LOGGER.info("Backup created: {}", backupFile);
+                Files.move(AGENT_FILE, backupFile);
+                LOGGER.info("Last elo-agent file renamed to '{}'", backupFile);
             }
         } catch (IOException e) {
             LOGGER.error("Unable to create backup of agent file: {}", e.getMessage(), e);
